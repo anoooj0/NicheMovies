@@ -1,8 +1,8 @@
 Update the information below with your project details.
 
-# Project Name
+# Project Name: NicheMovies
 
-## Team Members
+## Team Members: Travis and Anuj
 
 ## Problem
 
