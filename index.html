@@ -15,10 +15,16 @@
     <header id="header">
       <h1 id="title">NicheMovies</h1>
       <p id="mini-desc">Looking for movies or shows? You've come to the right place. &trade; </p>
+      
+      <nav id="main-nav">
+        <button class="nav-btn active" id="searchTab">Search Movies</button>
+        <button class="nav-btn" id="genresTab">Browse Genres</button>
+      </nav>
     </header>
 
     <div id="main-container">
-      <h2 id="searchTitle">Enter a movie title below and start searching!</h2>
+      <div id="searchSection">
+        <h2 id="searchTitle">Enter a movie title below and start searching!</h2>
       <div class="input-container">
         <input id="movieInput" placeholder="Enter movie title"/>
         <button id="submit">SEARCH</button>
@@ -37,8 +43,20 @@
           <p id="overview"></p>
           <p id="runtime"></p>
           <p id="rating"></p>
-          <p id="rated"></p>  
+          <p id="rated"></p>
+          
+          <div id="reviewsSection">
+            <h3 id="reviewsHeader">Audience Reviews</h3>
+            <div id="reviewsList"></div>
+          </div>
         </div>
+      </div>
+      </div>
+
+      <div id="genresSection" style="display: none;">
+        <h2 id="genresTitle">Browse by Genre</h2>
+        <div id="genresList"></div>
+        <div id="genreMovies"></div>
       </div>
 
       <div class="movie-row">
