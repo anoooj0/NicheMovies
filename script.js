@@ -23,6 +23,38 @@ let genreMovies = document.getElementById("genreMovies")
 
 const apiKey = "d5e22ead8fdd7c8a711d9808d12c9629";
 
+// Load recent movies on page load
+document.addEventListener('DOMContentLoaded', function() {
+  loadRecentMovies();
+});
+
+// Load recent movies for carousel
+function loadRecentMovies() {
+  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&page=1`)
+    .then(response => response.json())
+    .then(data => {
+      const moviesTrack = document.getElementById('moviesTrack');
+      moviesTrack.innerHTML = '';
+      
+      // Create two sets for seamless loop
+      const movies = data.results.slice(0, 10);
+      const allMovies = [...movies, ...movies];
+      
+      allMovies.forEach(movie => {
+        const movieImg = document.createElement('img');
+        movieImg.className = 'carousel-movie';
+        movieImg.src = movie.poster_path ? 
+          `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 
+          'https://via.placeholder.com/200x300?text=No+Image';
+        movieImg.alt = movie.title;
+        movieImg.title = movie.title;
+        movieImg.addEventListener('click', () => loadMovieDetails(movie.id));
+        moviesTrack.appendChild(movieImg);
+      });
+    })
+    .catch(error => console.error('Error loading recent movies:', error));
+}
+
 // Navigation functionality
 searchTab.addEventListener("click", function() {
   searchTab.classList.add("active");
